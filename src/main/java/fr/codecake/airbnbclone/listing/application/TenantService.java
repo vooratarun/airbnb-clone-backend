@@ -42,11 +42,14 @@ public class TenantService {
 
     public Page<DisplayCardListingDTO> getAllByCategory(Pageable pageable, BookingCategory category) {
         Page<Listing> allOrBookingCategory;
-        if (category == BookingCategory.ALL) {
-            allOrBookingCategory = listingRepository.findAllWithCoverOnly(pageable);
-        } else {
-            allOrBookingCategory = listingRepository.findAllByBookingCategoryWithCoverOnly(pageable, category);
-        }
+//        if (category == BookingCategory.ALL) {
+//            allOrBookingCategory = listingRepository.findAllWithCoverOnly(pageable);
+//        } else {
+//            allOrBookingCategory = listingRepository.findAllByBookingCategoryWithCoverOnly(pageable, category);
+//        }
+
+        allOrBookingCategory = listingRepository.findAllWithCoverOnly(pageable);
+
 
         return allOrBookingCategory.map(listingMapper::listingToDisplayCardListingDTO);
     }

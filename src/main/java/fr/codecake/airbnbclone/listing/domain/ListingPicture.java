@@ -20,9 +20,10 @@ public class ListingPicture extends AbstractAuditingEntity<Long> {
     @JoinColumn(name = "listing_fk", referencedColumnName = "id")
     private Listing listing;
 
-    @Lob
+
     @Column(name = "file", nullable = false)
-    private byte[] file;
+    private String file;
+
 
     @Column(name = "file_content_type")
     private String fileContentType;
@@ -47,11 +48,11 @@ public class ListingPicture extends AbstractAuditingEntity<Long> {
         this.listing = listing;
     }
 
-    public byte[] getFile() {
+    public String getFile() {
         return file;
     }
 
-    public void setFile(byte[] file) {
+    public void setFile(String file) {
         this.file = file;
     }
 
@@ -81,13 +82,13 @@ public class ListingPicture extends AbstractAuditingEntity<Long> {
 
     @Override
     public int hashCode() {
-        return Objects.hash(Arrays.hashCode(file), fileContentType, isCover);
+        return Objects.hash(file, fileContentType, isCover);
     }
 
     @Override
     public String toString() {
         return "ListingPicture{" +
-                "file=" + Arrays.toString(file) +
+                "file=" + file +
                 ", fileContentType='" + fileContentType + '\'' +
                 ", isCover=" + isCover +
                 '}';

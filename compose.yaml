@@ -1,10 +1,10 @@
 services:
   postgres:
-    image: 'postgres:latest'
+    image: postgres:latest
     volumes:
-      - ~/volumes/codecake/postgresql/:/var/lib/postgresql/data
+      - /home/tarv/volumes/codecake/postgresql:/var/lib/postgresql/data
     environment:
-      - POSTGRES_PASSWORD=codecake
-      - POSTGRES_USER=codecake
+      POSTGRES_USER: codecake
+      POSTGRES_PASSWORD: codecake
     ports:
-      - 127.0.0.1:5432:5432
+      - "127.0.0.1:5433:5432"

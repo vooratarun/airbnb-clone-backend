@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
 
 public record PictureDTO(
-        @NotNull byte[] file,
+        @NotNull String file,
         @NotNull String fileContentType,
         @NotNull boolean isCover
 ) {

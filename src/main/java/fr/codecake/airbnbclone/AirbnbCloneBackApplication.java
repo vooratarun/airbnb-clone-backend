@@ -8,6 +8,7 @@ public class AirbnbCloneBackApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AirbnbCloneBackApplication.class, args);
+
 	}
 
 }

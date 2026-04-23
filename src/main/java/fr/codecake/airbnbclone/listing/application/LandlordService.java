@@ -8,7 +8,6 @@ import fr.codecake.airbnbclone.listing.domain.Listing;
 import fr.codecake.airbnbclone.listing.mapper.ListingMapper;
 import fr.codecake.airbnbclone.listing.repository.ListingRepository;
 import fr.codecake.airbnbclone.sharedkernel.service.State;
-import fr.codecake.airbnbclone.user.application.Auth0Service;
 import fr.codecake.airbnbclone.user.application.UserService;
 import fr.codecake.airbnbclone.user.application.dto.ReadUserDTO;
 import org.springframework.stereotype.Service;
@@ -25,14 +24,12 @@ public class LandlordService {
 
     private final ListingMapper listingMapper;
     private final UserService userService;
-    private final Auth0Service auth0Service;
     private final PictureService pictureService;
 
-    public LandlordService(ListingRepository listingRepository, ListingMapper listingMapper, UserService userService, Auth0Service auth0Service, PictureService pictureService) {
+    public LandlordService(ListingRepository listingRepository, ListingMapper listingMapper, UserService userService, PictureService pictureService) {
         this.listingRepository = listingRepository;
         this.listingMapper = listingMapper;
         this.userService = userService;
-        this.auth0Service = auth0Service;
         this.pictureService = pictureService;
     }
 
@@ -45,8 +42,6 @@ public class LandlordService {
         Listing savedListing = listingRepository.saveAndFlush(newListing);
 
         pictureService.saveAll(saveListingDTO.getPictures(), savedListing);
-
-        auth0Service.addLandlordRoleToUser(userConnected);
 
         return listingMapper.listingToCreatedListingDTO(savedListing);
     }

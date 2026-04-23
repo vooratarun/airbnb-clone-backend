@@ -6,9 +6,9 @@ logging:
 
 spring:
   datasource:
-    url: jdbc:postgresql://${POSTGRES_URL}:5432/${POSTGRES_DB}
-    username: ${POSTGRES_USER}
-    password: ${POSTGRES_PASSWORD}
+    url: jdbc:postgresql://localhost:5432/airbnb
+    username: admin
+    password: secret
   jpa:
     properties:
       hibernate:
